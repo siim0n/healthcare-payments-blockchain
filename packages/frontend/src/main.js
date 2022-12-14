@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import './plugins/vuetify'
-import App from './App.vue'
-import router from './router'
+const Vue = require('vue')
+import('./plugins/vuetify.js');
+const app = require('./App.vue');
+const router = require('./router.js');
 
 // Set the backend hostname address. We use this in components to make API calls
 //Vue.prototype.$hostname = '/api' // No trailing slash. If its / it defaults to self URL
@@ -23,10 +23,10 @@ Vue.prototype.$create_patients = true
 Vue.config.productionTip = false
 
 // For pretty printing JSON
-import VueHighlightJS from 'vue-highlightjs'
+const VueHighlightJS = import('vue-highlightjs');
 Vue.use(VueHighlightJS)
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(app)
 }).$mount('#app')

@@ -48,7 +48,7 @@
                                      :value="100"></v-progress-circular>
                 <v-progress-circular color="teal" v-else
                                      :value="timer*2"></v-progress-circular>
-                </v-progress-circular>
+              
                 Saving Patient</p>
                 <p class="saving-text">
                   <v-progress-circular color="teal"
@@ -144,7 +144,7 @@
 </template>
 
 <script>
-import axios from "axios"; // posts to REST api
+import axios from "redaxios"; // posts to REST api
 import { Mixin } from "./Mixin.js"
 import Spark from "spark-md5"; // creates hashes used for IDs
 export default {

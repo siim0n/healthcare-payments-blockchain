@@ -30,7 +30,7 @@
                                      :value="100"></v-progress-circular>
                 <v-progress-circular color="indigo" v-else
                                      :value="timer*4"></v-progress-circular>
-                </v-progress-circular>
+          
                 Saving Claim
                 </p>
                 <p class="saving-text">
@@ -40,7 +40,7 @@
                                      :value="100"></v-progress-circular>
                 <v-progress-circular color="indigo" v-else
                                      :value="(timer - 20) * 4"></v-progress-circular>
-                </v-progress-circular>
+              
                  Creating Claim Response for Provider
                 </p>
                 <p class="saving-text">
@@ -50,7 +50,7 @@
                                      :value="100"></v-progress-circular>
                 <v-progress-circular color="indigo" v-else
                                      :value="(timer - 30) * 3"></v-progress-circular>
-                </v-progress-circular>
+           
                  Saving Patient Account
                 </p>
                 <p class="saving-text">
@@ -60,7 +60,7 @@
                                      :value="100"></v-progress-circular>
                 <v-progress-circular color="indigo" v-else
                                      :value="(timer - 50) * 3"></v-progress-circular>
-                </v-progress-circular>
+               
                  Creating Invoice for Patient
                 </p>
                
@@ -215,7 +215,7 @@
 </template>
 
 <script>
-import axios from "axios"; // posts to REST api
+import axios from "redaxios"; // posts to REST api
 import { Mixin } from "./Mixin.js"
 import moment from "moment"; // time tools
 import Spark from "spark-md5"; // creates hashes used for IDs

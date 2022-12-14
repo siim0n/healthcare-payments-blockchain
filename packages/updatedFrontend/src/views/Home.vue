@@ -114,8 +114,8 @@
     <v-container grid-list-xl
                  text-xs-left
                  fluid>
-      <v-layout row
-                class="content">
+      <v-layout row class="content">
+    
         <provider :selected="step === 'provider'"
                   :claim="claim"
                   :step="step"
@@ -134,7 +134,7 @@
                  :claim="claim"
                  :step="step"
                  :selected="['patient', 'paid'].includes(step)"></patient>
-        </v-flex>
+      
 
       </v-layout>
 
@@ -144,12 +144,12 @@
 </template>
 
 <script>
-import axios from "axios"; // posts to REST api
+import axios from "redaxios"; // posts to REST api
 // @ is an alias to /src
-import moment from "moment"; // time tools
-import Provider from "@/components/Provider.vue";
-import Payer from "@/components/Payer.vue";
-import Patient from "@/components/Patient.vue";
+import dayjs from "dayjs"; // time tools
+const Provider = import("@/components/Provider.vue");
+const Payer = import("@/components/Payer.vue");
+const Patient = import("@/components/Patient.vue");
 
 
 export default {
@@ -446,7 +446,7 @@ export default {
          block.name = "Approve Claim for XYZ Provider for ".concat(
           this.claim.first_name,
           " ",
-          this.claim.last_name, ' on ', moment(this.claim.timestamp).format("MM/DD/YYYY") 
+          this.claim.last_name, ' on ', dayjs(this.claim.timestamp).format("MM/DD/YYYY") 
         );    
         block.fhir = JSON.stringify(this.fhir_adjudication, null, 2);
       } else if (
@@ -454,7 +454,7 @@ export default {
         blockJson.indexOf(this.claim.invoice_uid) > 0
       ) {
         block.type = "patient";
-        block.name = `Payment from ${this.claim.first_name} ${this.claim.last_name} to XYZ Provider for visit on ${moment(this.claim.timestamp).format("MM/DD/YYYY")}`
+        block.name = `Payment from ${this.claim.first_name} ${this.claim.last_name} to XYZ Provider for visit on ${dayjs(this.claim.timestamp).format("MM/DD/YYYY")}`
         block.fhir = JSON.stringify(this.fhir_payment, null, 2);
       } else if (
         this.claim.encounter_uid &&
@@ -464,7 +464,7 @@ export default {
         block.name = "Create Claim for XYZ Provider for ".concat(
           this.claim.first_name,
           " ",
-          this.claim.last_name, ' on ', moment(this.claim.timestamp).format("MM/DD/YYYY") 
+          this.claim.last_name, ' on ', dayjs(this.claim.timestamp).format("MM/DD/YYYY") 
         );
         block.fhir = JSON.stringify(this.fhir_claim, null, 2);
       } else if (
